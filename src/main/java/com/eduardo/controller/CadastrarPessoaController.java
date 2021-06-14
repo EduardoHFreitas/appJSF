@@ -1,6 +1,7 @@
 package com.eduardo.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -100,6 +101,7 @@ public class CadastrarPessoaController {
 					newPessoaModel.setEndereco(endereco);
 					newPessoaModel.setNome(nome);
 					newPessoaModel.setSexo(sexo);
+					newPessoaModel.setDataCadastro(LocalDateTime.now());
 
 					pessoaRepository.SalvarNovoRegistro(newPessoaModel);
 				}

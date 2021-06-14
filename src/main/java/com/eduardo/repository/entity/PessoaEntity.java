@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_pessoa")
+@Table(name = "pessoa")
 public class PessoaEntity {
 
 	@Id
@@ -19,7 +19,7 @@ public class PessoaEntity {
 	@Column(name = "id")
 	private Integer codigo;
 
-	@Column(name = "pessoa")
+	@Column(name = "nome")
 	private String nome;
 
 	@Column(name = "sexo")
