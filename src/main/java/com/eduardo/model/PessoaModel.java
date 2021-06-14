@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class PessoaModel {
 
-	private Integer codigo;
+	private Integer id;
 	private String nome;
 	private String sexo;
 	private LocalDateTime dataCadastro;
@@ -15,9 +15,9 @@ public class PessoaModel {
 	public PessoaModel() {
 	}
 	
-	public PessoaModel(Integer codigo, String nome, String sexo, LocalDateTime dataCadastro, String email, String endereco, UsuarioModel usuarioModel) {
+	public PessoaModel(Integer id, String nome, String sexo, LocalDateTime dataCadastro, String email, String endereco, UsuarioModel usuarioModel) {
 		super();
-		this.codigo = codigo;
+		this.id = id;
 		this.nome = nome;
 		this.sexo = sexo;
 		this.dataCadastro = dataCadastro;
@@ -26,12 +26,12 @@ public class PessoaModel {
 		this.usuarioModel = usuarioModel;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {

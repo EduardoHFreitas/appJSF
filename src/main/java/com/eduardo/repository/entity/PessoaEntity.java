@@ -7,17 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "pessoa")
+@NamedQueries({
+	@NamedQuery(name="PessoaEntity.findAll", query="SELECT p FROM PessoaEntity p")
+})
 public class PessoaEntity {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer codigo;
+	private Integer id;
 
 	@Column(name = "nome")
 	private String nome;
@@ -41,9 +46,9 @@ public class PessoaEntity {
 	public PessoaEntity() {
 	}
 	
-	public PessoaEntity(Integer codigo, String nome, String sexo, LocalDateTime dataCadastro, String email, String endereco, UsuarioEntity usuarioEntity) {
+	public PessoaEntity(Integer id, String nome, String sexo, LocalDateTime dataCadastro, String email, String endereco, UsuarioEntity usuarioEntity) {
 		super();
-		this.codigo = codigo;
+		this.id = id;
 		this.nome = nome;
 		this.sexo = sexo;
 		this.dataCadastro = dataCadastro;
@@ -52,12 +57,12 @@ public class PessoaEntity {
 		this.usuarioEntity = usuarioEntity;
 	}
 
-	public Integer getCodigo() {
-		return codigo;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
