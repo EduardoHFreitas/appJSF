@@ -57,4 +57,9 @@ public class ConsultarPessoaController implements Serializable {
 		this.pessoaRepository.alterarRegistro(this.pessoaModel);	
 		this.init();
 	}
+	
+	public void excluirPessoa(PessoaModel pessoaModel){
+		this.pessoaRepository.excluirRegistro(pessoaModel.getId());
+		this.pessoas.remove(pessoaModel);
+	}
 }

@@ -99,4 +99,12 @@ public class PessoaRepository {
  
 		entityManager.merge(pessoaEntity);
 	}
+	
+	public void excluirRegistro(int codigo){
+		entityManager =  Uteis.JpaEntityManager();		
+ 
+		PessoaEntity pessoaEntity = this.getPessoa(codigo);
+ 
+		entityManager.remove(pessoaEntity);
+	}
 }
