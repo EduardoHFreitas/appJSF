@@ -15,7 +15,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pessoa")
 @NamedQueries({
-	@NamedQuery(name="PessoaEntity.findAll", query="SELECT p FROM PessoaEntity p")
+	@NamedQuery(name="PessoaEntity.findAll", query="SELECT p FROM PessoaEntity p"),
+	@NamedQuery(name="PessoaEntity.groupBySexo",query= "SELECT p.sexo, count(p) as total FROM PessoaEntity p GROUP By p.sexo")
+
 })
 public class PessoaEntity {
 
