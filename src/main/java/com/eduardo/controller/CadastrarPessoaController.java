@@ -55,7 +55,7 @@ public class CadastrarPessoaController {
 	public void SalvarNovaPessoa() {
 		pessoaModel.setUsuarioModel(this.usuarioController.GetUsuarioSession());
 
-		pessoaRepository.SalvarNovoRegistro(this.pessoaModel);
+		pessoaRepository.salvarNovoRegistro(this.pessoaModel);
 
 		this.pessoaModel = null;
 
@@ -103,7 +103,7 @@ public class CadastrarPessoaController {
 					newPessoaModel.setSexo(sexo);
 					newPessoaModel.setDataCadastro(LocalDateTime.now());
 
-					pessoaRepository.SalvarNovoRegistro(newPessoaModel);
+					pessoaRepository.salvarNovoRegistro(newPessoaModel);
 				}
 			}
 

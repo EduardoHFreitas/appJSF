@@ -22,7 +22,7 @@ public class PessoaRepository {
 
 	EntityManager entityManager;
 
-	public void SalvarNovoRegistro(PessoaModel pessoaModel) {
+	public void salvarNovoRegistro(PessoaModel pessoaModel) {
 
 		entityManager = Uteis.JpaEntityManager();
 
@@ -78,5 +78,25 @@ public class PessoaRepository {
 		}
 
 		return pessoasModel;
+	}
+	
+	private PessoaEntity getPessoa(int id){
+		entityManager =  Uteis.JpaEntityManager();
+ 
+		return entityManager.find(PessoaEntity.class, id);
+	}
+ 
+	public void alterarRegistro(PessoaModel pessoaModel){
+ 
+		entityManager =  Uteis.JpaEntityManager();
+ 
+		PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getId());
+ 
+		pessoaEntity.setEmail(pessoaModel.getEmail());
+		pessoaEntity.setEndereco(pessoaModel.getEndereco());
+		pessoaEntity.setNome(pessoaModel.getNome());
+		pessoaEntity.setSexo(pessoaModel.getSexo());
+ 
+		entityManager.merge(pessoaEntity);
 	}
 }
