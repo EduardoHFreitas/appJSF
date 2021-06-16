@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import com.eduardo.model.PessoaModel;
-import com.eduardo.model.UsuarioModel;
 import com.eduardo.repository.entity.PessoaEntity;
 import com.eduardo.repository.entity.UsuarioEntity;
 import com.eduardo.uteis.Uteis;
@@ -51,33 +51,8 @@ public class PessoaRepository {
 		@SuppressWarnings("unchecked")
 		Collection<PessoaEntity> pessoasEntity = (Collection<PessoaEntity>) query.getResultList();
 
-		PessoaModel pessoaModel = null;
-
-		for (PessoaEntity pessoaEntity : pessoasEntity) {
-
-			pessoaModel = new PessoaModel();
-			pessoaModel.setId(pessoaEntity.getId());
-			pessoaModel.setDataCadastro(pessoaEntity.getDataCadastro());
-			pessoaModel.setEmail(pessoaEntity.getEmail());
-			pessoaModel.setEndereco(pessoaEntity.getEndereco());
-			pessoaModel.setNome(pessoaEntity.getNome());
-
-			if (pessoaEntity.getSexo().equals("M")) {
-				pessoaModel.setSexo("Masculino");
-			} else {
-				pessoaModel.setSexo("Feminino");
-			}
-
-			UsuarioEntity usuarioEntity = pessoaEntity.getUsuarioEntity();
-
-			UsuarioModel usuarioModel = new UsuarioModel();
-			usuarioModel.setLogin(usuarioEntity.getLogin());
-
-			pessoaModel.setUsuarioModel(usuarioModel);
-
-			pessoasModel.add(pessoaModel);
-		}
-
+		pessoasModel = pessoasEntity.stream().map(p -> new PessoaModel(p)).collect(Collectors.toList());
+		
 		return pessoasModel;
 	}
 	

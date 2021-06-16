@@ -2,6 +2,8 @@ package com.eduardo.model;
 
 import java.io.Serializable;
 
+import com.eduardo.repository.entity.UsuarioEntity;
+
 public class UsuarioModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -9,6 +11,16 @@ public class UsuarioModel implements Serializable {
 	private Integer id;
 	private String login;
 	private String senha;
+
+	public UsuarioModel() {
+	}
+	
+	public UsuarioModel(UsuarioEntity usuarioEntity) {
+		super();
+		this.id = usuarioEntity.getId();
+		this.login = usuarioEntity.getLogin();
+		this.senha = usuarioEntity.getSenha();
+	}
 
 	public Integer getId() {
 		return id;

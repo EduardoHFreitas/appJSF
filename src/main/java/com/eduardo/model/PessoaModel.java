@@ -2,6 +2,8 @@ package com.eduardo.model;
 
 import java.time.LocalDateTime;
 
+import com.eduardo.repository.entity.PessoaEntity;
+
 public class PessoaModel {
 
 	private Integer id;
@@ -26,6 +28,17 @@ public class PessoaModel {
 		this.usuarioModel = usuarioModel;
 	}
 
+	public PessoaModel(PessoaEntity pessoaEntity) {
+		super();
+		this.id = pessoaEntity.getId();
+		this.nome = pessoaEntity.getNome();
+		this.sexo = pessoaEntity.getSexo();
+		this.dataCadastro = pessoaEntity.getDataCadastro();
+		this.email = pessoaEntity.getEmail();
+		this.endereco = pessoaEntity.getEndereco();
+		this.usuarioModel = new UsuarioModel(pessoaEntity.getUsuarioEntity());		
+	}
+	
 	public Integer getId() {
 		return id;
 	}
