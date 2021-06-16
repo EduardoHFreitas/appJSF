@@ -19,7 +19,7 @@ public class UsuarioEntity implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private String id;
+	private Integer id;
 
 	@Column(name = "login")
 	private String login;
@@ -30,18 +30,18 @@ public class UsuarioEntity implements Serializable {
 	public UsuarioEntity() {
 	}
 
-	public UsuarioEntity(String id, String login, String senha) {
+	public UsuarioEntity(Integer id, String login, String senha) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.senha = senha;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
